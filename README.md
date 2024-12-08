@@ -40,6 +40,7 @@ metadata:
   name: mywebapp
   namespace: argocd
 spec:
+  project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     chart: argo
