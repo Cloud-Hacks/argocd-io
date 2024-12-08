@@ -1,0 +1,7 @@
+appName: myapp
+
+port: 80
+
+image:
+  name: afzal442/movie-catalogue
+  tag: v4
