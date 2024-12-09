@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: literate-space-guide-x55994v5977h66g-8080.app.github.dev
+  - host: argocd.web.io
     http:
       paths:
       - path: /
