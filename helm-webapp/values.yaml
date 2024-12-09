@@ -5,3 +5,14 @@ port: 80
 image:
   name: afzal442/movie-catalogue
   tag: v4
+
+replicas: 3
+
+serviceAccount:
+  name: myapp-sa
+
+role:
+  name: myapp-role
+
+roleBinding:
+  name: myapp-rolebinding
