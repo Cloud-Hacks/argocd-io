@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myguestapp
+  name: mywebapp
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argo-helm.git
+    repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
-    path: charts/argo-cd
+    path: helm-webapp
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
