@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloud-hacks/argocd-io
-    chart: webapp
+    repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
+    path: helm-webapp
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp

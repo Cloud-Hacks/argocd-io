@@ -43,13 +43,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
-    chart: argo
-<!-- spec:
-  project: default
-  source:
-    repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
-    path: deployments -->
+    path: helm-webapp
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
