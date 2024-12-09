@@ -9,22 +9,23 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}
-      tier: frontend
+      tier: backend
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
-        tier: frontend
-    spec: # Pod spec
+        tier: backend
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
       containers:
       - name: mywebapp
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.port }}
         resources:
           requests:
-            memory: "16Mi" 
-            cpu: "50m"    # 500milliCPUs (1/2 CPU)
+            memory: "16Mi"
+            cpu: "50m"
           limits:
             memory: "128Mi"
             cpu: "100m"

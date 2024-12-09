@@ -11,5 +11,5 @@ spec:
     name: go-echo
   selector:
     app: {{ .Values.appName }}
-    tier: frontend
+    tier: backend
   type: NodePort
