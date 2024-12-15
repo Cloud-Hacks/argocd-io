@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
-  project: ecom-microservice
+  project: default
   source:
     path: kustom-webapp
     repoURL: {{ .Values.spec.source.repoURL }}

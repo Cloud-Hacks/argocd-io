@@ -4,7 +4,7 @@ metadata:
   name: ecom-microservice
   namespace: argocd
 spec:
-  project: ecom-microservice
+  project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
