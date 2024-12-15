@@ -36,14 +36,8 @@ spec:
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
-    description: Read-only privileges to go-project
+    description: Read-only privileges to ecom-microservice
     policies:
-    - p, proj:go-project:read-only, applications, get, go-project/*, allow
+    - p, proj:ecom-microservice:read-only, applications, get, ecom-microservice/*, allow
     groups:
     - my-oidc-group
-  # A role which provides sync privileges to only the myapp-dev application, e.g. to provide
-  # sync privileges to a CI system
-  - name: ci-role
-    description: Sync privileges for myapp-dev
-    policies:
-    - p, proj:go-project:ci-role, applications, sync, go-project/myapp-dev, allow
