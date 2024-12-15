@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: go-project
+  name: microservice
   namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
@@ -13,7 +13,7 @@ spec:
   - https://github.com/cloud-hacks/argocd-io
   # Only permit applications to deploy to the mydev namespace in the same cluster
   destinations:
-  - namespace: mydev
+  - namespace: mydevapp
     server: https://kubernetes.default.svc
   # Deny all cluster-scoped resources from being created, except for Namespace
   clusterResourceWhitelist:
