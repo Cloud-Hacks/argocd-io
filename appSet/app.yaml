@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: minikube-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: minikube
+            name: frontend
+            namespace: mydev
+            repoPath: appProject/templates/frontend
+          - cluster: minikube
+            name: backend
+            namespace: mydev
+            repoPath: appProject/templates/backend
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/cloud-hacks/argocd-io
+        targetRevision: HEAD
+        path: '{{repoPath}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
