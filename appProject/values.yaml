@@ -1,0 +1,7 @@
+spec:
+  destination:
+    namespace: mydev
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cloud-hacks/argocd-io
+    targetRevision: HEAD

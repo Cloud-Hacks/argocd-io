@@ -10,7 +10,7 @@ spec:
   description: Microservices for my project
   # Allow manifests to deploy from any Git repos
   sourceRepos:
-  - '*'
+  - https://github.com/cloud-hacks/argocd-io
   # Only permit applications to deploy to the mydev namespace in the same cluster
   destinations:
   - namespace: mydev
