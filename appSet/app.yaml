@@ -4,20 +4,6 @@ metadata:
   name: applicationset
   namespace: argocd
 spec:
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-        - matchExpressions:
-            key: app-group
-            operator: In
-            values:
-              - frontend-team
-        - matchExpressions:
-            key: app-group
-            operator: In
-            values:
-              - backend-team
   generators:
     - list:
         elements:
@@ -33,6 +19,21 @@ spec:
             repoPath: appSet/prod
             labels:
               app-group: backend-team
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            key: app-group
+            operator: In
+            values:
+              - frontend-team
+        - matchExpressions:
+            key: app-group
+            operator: In
+            values:
+              - backend-team
+          maxUpdate: 10%
   template:
     metadata:
       name: '{{name}}'
@@ -49,4 +50,3 @@ spec:
         automated:
           prune: true
           selfHeal: true
-        preserveResourcesOnDeletion: false
