@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: applicationset
+  name: myappset
   namespace: argocd
 spec:
   generators:
@@ -9,13 +9,11 @@ spec:
         elements:
           - cluster: minikube
             name: mydevapp
-            namespace: mydev
             repoPath: appSet/dev
             labels:
               app-group: mydev-team
           - cluster: minikube
             name: myprodapp
-            namespace: mydev
             repoPath: appSet/prod
             labels:
               app-group: myprod-team
@@ -45,7 +43,7 @@ spec:
         path: '{{repoPath}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: mydev
       syncPolicy:
         automated:
           prune: true
