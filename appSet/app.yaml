@@ -24,15 +24,15 @@ spec:
     rollingSync:
       steps:
         - matchExpressions:
-            key: app-group
-            operator: In
-            values:
-              - frontend-team
+            - key: app-group
+              operator: In
+              values:
+                - frontend-team
         - matchExpressions:
-            key: app-group
-            operator: In
-            values:
-              - backend-team
+            - key: app-group
+              operator: In
+              values:
+                - backend-team
           maxUpdate: 10%
   template:
     metadata:
