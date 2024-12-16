@@ -31,17 +31,17 @@ spec:
   namespaceResourceWhitelist:
   - group: 'apps'
     kind: Deployment
-  - group: 'apps'
-    kind: Services
-  - group: 'apps'
+  - group: ''
+    kind: Service
+  - group: ''
     kind: ConfigMap
-  - group: 'apps'
+  - group: ''
     kind: Secret
-  - group: 'apps'
+  - group: ''
     kind: ServiceAccount
-  - group: 'apps'
+  - group: ''
     kind: Role
-  - group: 'apps'
+  - group: ''
     kind: RoleBinding
   roles:
   # A role which provides read-only access to all applications in the project
