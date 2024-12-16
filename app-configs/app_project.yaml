@@ -32,6 +32,8 @@ spec:
   - group: ''
     kind: Secret
   - group: ''
+    kind: ReplicaSet
+  - group: ''
     kind: ServiceAccount
   - group: 'rbac.authorization.k8s.io'
     kind: Role
