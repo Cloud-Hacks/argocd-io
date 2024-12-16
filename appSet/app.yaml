@@ -8,17 +8,17 @@ spec:
     - list:
         elements:
           - cluster: minikube
-            name: frontend
+            name: mydevapp
             namespace: mydev
             repoPath: appSet/dev
             labels:
-              app-group: frontend-team
+              app-group: mydev-team
           - cluster: minikube
-            name: backend
+            name: myprodapp
             namespace: mydev
             repoPath: appSet/prod
             labels:
-              app-group: backend-team
+              app-group: myprod-team
   strategy:
     type: RollingSync
     rollingSync:
@@ -27,12 +27,12 @@ spec:
             - key: app-group
               operator: In
               values:
-                - frontend-team
+                - mydev-team
         - matchExpressions:
             - key: app-group
               operator: In
               values:
-                - backend-team
+                - myprod-team
           maxUpdate: 10%
   template:
     metadata:
