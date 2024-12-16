@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
     path: helm-webapp
+    helm:
+      valueFiles:
+      - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: mydev
