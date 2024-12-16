@@ -34,6 +34,8 @@ spec:
   - group: ''
     kind: ReplicaSet
   - group: ''
+    kind: Endpoints
+  - group: ''
     kind: ServiceAccount
   - group: 'rbac.authorization.k8s.io'
     kind: Role
