@@ -1,6 +1,6 @@
 spec:
   destination:
-    namespace: mydev
+    namespace: mydevapp
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io
