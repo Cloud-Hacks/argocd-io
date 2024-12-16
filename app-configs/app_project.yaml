@@ -35,6 +35,14 @@ spec:
     kind: Services
   - group: 'apps'
     kind: ConfigMap
+  - group: 'apps'
+    kind: Secret
+  - group: 'apps'
+    kind: ServiceAccount
+  - group: 'apps'
+    kind: Role
+  - group: 'apps'
+    kind: RoleBinding
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
