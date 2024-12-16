@@ -32,6 +32,8 @@ spec:
   - group: 'apps'
     kind: Deployment
   - group: ''
+    kind: Pod
+  - group: ''
     kind: Service
   - group: ''
     kind: ConfigMap
@@ -39,9 +41,9 @@ spec:
     kind: Secret
   - group: ''
     kind: ServiceAccount
-  - group: ''
+  - group: 'rbac.authorization.k8s.io'
     kind: Role
-  - group: ''
+  - group: 'rbac.authorization.k8s.io'
     kind: RoleBinding
   roles:
   # A role which provides read-only access to all applications in the project
