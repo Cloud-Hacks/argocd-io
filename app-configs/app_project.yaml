@@ -40,4 +40,4 @@ spec:
     policies:
     - p, proj:ecom-microservice:read-only, applications, get, ecom-microservice/*, allow
     groups:
-    - my-oidc-group
+    - app-team
