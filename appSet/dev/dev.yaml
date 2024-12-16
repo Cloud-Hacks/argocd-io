@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     path: helm-webapp
   destination:
-    server: https://kubernetes.default.svc
+    server: https://192.168.49.2:8443
     namespace: mydev
   syncPolicy:
     automated:
