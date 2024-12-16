@@ -1,20 +1,38 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: minikube-applicationset
+  name: applicationset
   namespace: argocd
 spec:
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            key: app-group
+            operator: In
+            values:
+              - frontend-team
+        - matchExpressions:
+            key: app-group
+            operator: In
+            values:
+              - backend-team
   generators:
     - list:
         elements:
           - cluster: minikube
             name: frontend
             namespace: mydev
-            repoPath: appProject/templates/frontend
+            repoPath: appSet/dev
+            labels:
+              app-group: frontend-team
           - cluster: minikube
             name: backend
             namespace: mydev
-            repoPath: appProject/templates/backend
+            repoPath: appSet/prod
+            labels:
+              app-group: backend-team
   template:
     metadata:
       name: '{{name}}'
@@ -31,3 +49,4 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        preserveResourcesOnDeletion: false
