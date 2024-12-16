@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: argocd
   annotations:
-    notifications.argoproj.io/subscribe.on-sync-failed.pagerdutyv2: "<serviceID for Pagerduty>"
+    notifications.argoproj.io/subscribe.on-sync-failed.pagerdutyv2: "P7N57QR"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

@@ -5,4 +5,4 @@ metadata:
   namespace: argocd
 type: Opaque
 data:
-  pagerduty-key-my-service: <pd-integration-key>
+  pagerduty-key-my-service: 51762f12c9a84b09c06c34524f22c72d
