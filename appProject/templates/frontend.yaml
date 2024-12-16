@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
-  project: default
+  project: ecom-microservice
   source:
     path: helm-webapp
     repoURL: {{ .Values.spec.source.repoURL }}
