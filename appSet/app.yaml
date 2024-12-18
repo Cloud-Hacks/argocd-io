@@ -10,31 +10,31 @@ spec:
           - cluster: minikube
             name: mydevapp
             repoPath: appSet/dev
-            labels:
-              app-group: mydev-team
+            label: mydev-team
           - cluster: minikube
             name: myprodapp
             repoPath: appSet/prod
-            labels:
-              app-group: myprod-team
+            label: myprod-team
   strategy:
     type: RollingSync
     rollingSync:
       steps:
         - matchExpressions:
-            - key: app-group
+            - key: app
               operator: In
               values:
                 - mydev-team
         - matchExpressions:
-            - key: app-group
+            - key: app
               operator: In
               values:
                 - myprod-team
-          maxUpdate: 50% # all applications matched are updated 10% at a time
+          maxUpdate: 20% # all applications matched are updated 10% at a time
   template:
     metadata:
       name: '{{name}}'
+      labels:
+        app: '{{label}}'
     spec:
       project: default
       source:
