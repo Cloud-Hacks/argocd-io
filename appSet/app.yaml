@@ -31,7 +31,7 @@ spec:
               operator: In
               values:
                 - myprod-team
-          maxUpdate: 10% # all applications matched are updated 10% at a time
+          maxUpdate: 20% # all applications matched are updated 10% at a time
   template:
     metadata:
       name: '{{name}}'
