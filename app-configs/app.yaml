@@ -7,17 +7,17 @@ spec:
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
-    targetRevision: HEAD
+    targetRevision: main
     path: helm-webapp
     helm:
       valueFiles:
       - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: mydev
+    namespace: staging
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
