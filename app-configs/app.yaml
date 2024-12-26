@@ -12,6 +12,7 @@ spec:
     helm:
       valueFiles:
       - values-dev.yaml
+    ignoreMissingValueFiles: true
   destination:
     server: https://kubernetes.default.svc
     namespace: staging
@@ -20,4 +21,9 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+    - RespectIgnoreDifferences=true
+ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+      - /spec/replicas
