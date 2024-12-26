@@ -24,8 +24,8 @@ spec:
         - containerPort: {{ .Values.port }}
         resources:
           requests:
-            memory: "16Mi"
-            cpu: "50m"
+            memory: 1Gi
+            cpu: 1
           limits:
             memory: 1Gi
             cpu: 1
