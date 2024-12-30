@@ -16,3 +16,8 @@ role:
 
 roleBinding:
   name: myapp-rolebinding
+
+resources:
+  requests:
+    memory: 0.5Gi
+    cpu: 250m
