@@ -8,11 +8,12 @@ spec:
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: main
+    # ref: values
     path: helm-webapp
     helm:
       valueFiles:
       - values-dev.yaml
-    ignoreMissingValueFiles: true
+      # ignoreMissingValueFiles: true
   destination:
     server: https://kubernetes.default.svc
     namespace: staging
@@ -21,9 +22,10 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - RespectIgnoreDifferences=true
-ignoreDifferences:
-  - group: apps
-    kind: Deployment
-    jsonPointers:
-      - /spec/replicas
+    # - RespectIgnoreDifferences=true
+    - CreateNamespace=true
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
