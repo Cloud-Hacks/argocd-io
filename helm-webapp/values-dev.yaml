@@ -3,6 +3,6 @@ replicas: 1
 
 resources:
   requests:
-    memory: 0.5Gi
     cpu: 1
+    memory: 100Mi
 
