@@ -1,0 +1,18 @@
+{
+    "variable": {
+        "topic_arn": [
+            {
+                "description": "The ARN of the SNS topic.",
+                "nullable": false,
+                "type": "string"
+            }
+        ],
+        "lambda_function_arn": [
+            {
+                "description": "Arn of your Lambda Function.",
+                "nullable": false,
+                "type": "string"
+            }
+        ]
+    }
+}

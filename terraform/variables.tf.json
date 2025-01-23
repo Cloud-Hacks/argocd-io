@@ -1,0 +1,23 @@
+{
+  "variable": {
+    "environment_variables": [
+      {
+        "default": {
+          "CORS_ALLOWED_ORIGINS": "*"
+        },
+        "description": "A map that defines environment variables for the Lambda Function.",
+        "type": "map(string)",
+        "nullable": true,
+        "sensitive": false
+      }
+    ],
+    "topic_name": [
+      {
+        "description": "The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the '.fifo' suffix. If omitted, Terraform will assign a random, unique name.",
+        "type": "string",
+        "nullable": false,
+        "sensitive": false
+      }
+    ]
+  }
+}
