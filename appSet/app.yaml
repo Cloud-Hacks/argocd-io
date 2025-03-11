@@ -7,11 +7,11 @@ spec:
   generators:
     - list:
         elements:
-          - cluster: minikube
+          - cluster: dev
             name: mydevapp
             repoPath: appSet/dev
             label: mydev-team
-          - cluster: minikube
+          - cluster: prod
             name: myprodapp
             repoPath: appSet/prod
             label: myprod-team
@@ -42,7 +42,7 @@ spec:
         targetRevision: HEAD
         path: '{{repoPath}}'
       destination:
-        server: https://kubernetes.default.svc
+        server: in-cluster
         namespace: mydev
       syncPolicy:
         automated:
