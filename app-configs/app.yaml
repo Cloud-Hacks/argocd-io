@@ -15,7 +15,7 @@ spec:
       - values-dev.yaml
       # ignoreMissingValueFiles: true
   destination:
-    server: https://kubernetes.default.svc
+    name: dev
     namespace: staging
   syncPolicy:
     automated:

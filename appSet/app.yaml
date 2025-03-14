@@ -7,12 +7,12 @@ spec:
   generators:
     - list:
         elements:
-          - cluster: dev
-            name: mydevapp
+          - cluster: dev-mini
+            name: dev
             repoPath: appSet/dev
             label: mydev-team
-          - cluster: prod
-            name: myprodapp
+          - cluster: prod-mini
+            name: prod
             repoPath: appSet/prod
             label: myprod-team
   strategy:
@@ -42,9 +42,11 @@ spec:
         targetRevision: HEAD
         path: '{{repoPath}}'
       destination:
-        server: in-cluster
+        name: '{{name}}'
         namespace: mydev
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
