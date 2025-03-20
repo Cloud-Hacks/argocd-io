@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: backend
-  namespace: argocd
+  namespace: dev
   annotations:
     notifications.argoproj.io/subscribe.on-sync-failed.pagerdutyv2: "P7N57QR"
   finalizers:
@@ -16,3 +16,6 @@ spec:
     path: kustom-webapp/overlays/dev
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
