@@ -5,7 +5,6 @@ metadata:
 spec:
   destination:
     name: in-cluster
-    namespace: mydevapp
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
