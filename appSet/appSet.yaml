@@ -7,7 +7,11 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - clusters: {} # Automatically use all clusters defined within Argo CD
+  # - clusters: {} # Automatically use all clusters defined within Argo CD
+  - clusters:
+      selector:
+        matchLabels:
+          akuity.io/argo-cd-cluster-name: dev
   template:
     metadata:
       name: '{{.name}}-guestbook' # 'name' field of the Secret

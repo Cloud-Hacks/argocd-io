@@ -45,8 +45,8 @@ spec:
         name: '{{name}}'
         namespace: mydev
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        # automated:
+        #   prune: true
+        #   selfHeal: true
         syncOptions:
         - CreateNamespace=true

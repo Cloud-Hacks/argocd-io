@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
-    server: {{ .Values.spec.destination.server }}
+    name: {{ .Values.spec.destination.name }}
   project: ecom-microservice
   source:
     path: kustom-webapp/overlays/dev

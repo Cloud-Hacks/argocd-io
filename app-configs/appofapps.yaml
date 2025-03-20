@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ecom-microservice
-  namespace: mydev
+  namespace: argocd
 spec:
+  destination:
+    name: in-cluster
+    namespace: mydevapp
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     targetRevision: HEAD
     path: appProject
-  destination:
-    server: in-cluster
-    namespace: mydevapp
   syncPolicy:
     automated:
       prune: false
