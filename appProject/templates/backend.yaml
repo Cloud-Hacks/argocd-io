@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: backend
+  namespace: dev
   annotations:
     notifications.argoproj.io/subscribe.on-sync-failed.pagerdutyv2: "P7N57QR"
   finalizers:
