@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap
-  namespace: dev
+  # namespace: dev Without default ns, app of apps won't be created
 spec:
   destination:
     name: in-cluster
