@@ -17,6 +17,7 @@ spec:
         tier: backend
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
+      securityContext: {{ .Values.securityContext }}  # Add securityContext here
       containers:
       - name: mywebapp
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
@@ -29,3 +30,6 @@ spec:
           limits:
             memory: 1Gi
             cpu: 1
+        env:  # Add env variables here
+        - name: OPENCOST_PARQUET_FILE_KEY_PREFIX
+          value: {{ .Values.env.OPENCOST_PARQUET_FILE_KEY_PREFIX }}

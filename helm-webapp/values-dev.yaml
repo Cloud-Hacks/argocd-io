@@ -6,3 +6,6 @@ resources:
     cpu: 1
     memory: 100Mi
 
+securityContext: baseline  # Add securityContext value here
+env:  # Add env variables here
+  OPENCOST_PARQUET_FILE_KEY_PREFIX: "dev"
