@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: release-job
+  generateName: release-job-
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -10,3 +10,6 @@ spec:
     spec:
       containers:
       - name: release-job
+        image: busybox
+        command: ["sh", "-c", "echo Hello, World!"]  # Example command
+      restartPolicy: OnFailure  # Add the restartPolicy field
