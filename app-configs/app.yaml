@@ -15,8 +15,8 @@ spec:
       parameters:
       - name: securityContext
         value: null
-      - name: env
-        value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
+      # - name: env
+      #   value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
       # ignoreMissingValueFiles: true
   destination:
     name: dev
