@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mywebapp
-  namespace: argocd
 spec:
   project: default
   source:
@@ -13,6 +12,11 @@ spec:
     helm:
       valueFiles:
       - values-dev.yaml
+      parameters:
+      - name: securityContext
+        value: null
+      - name: env
+        value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
       # ignoreMissingValueFiles: true
   destination:
     name: dev
