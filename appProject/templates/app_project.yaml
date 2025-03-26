@@ -38,6 +38,8 @@ spec:
   - group: ''
     kind: Endpoints
   - group: ''
+    kindd: Job
+  - group: ''
     kind: ServiceAccount
   - group: 'rbac.authorization.k8s.io'
     kind: Role
