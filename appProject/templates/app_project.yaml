@@ -38,7 +38,7 @@ spec:
   - group: ''
     kind: Endpoints
   - group: 'batch'
-    kindd: Job
+    kind: Job
   - group: ''
     kind: ServiceAccount
   - group: 'rbac.authorization.k8s.io'
