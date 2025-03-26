@@ -17,7 +17,7 @@ spec:
         tier: backend
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
-      securityContext: {{ toYaml .Values.securityContext }}  # Add securityContext here
+      securityContext: {{ .Values.securityContext }}  # Add securityContext here
       containers:
       - name: mywebapp
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
