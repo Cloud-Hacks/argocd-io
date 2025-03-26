@@ -12,6 +12,3 @@ spec:
   destination:
     namespace: guestbook
     name: dev
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true

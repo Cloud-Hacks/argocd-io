@@ -15,6 +15,3 @@ spec:
   destination:
     namespace: guestbook-dev
     name: dev
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true

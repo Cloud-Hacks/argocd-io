@@ -11,3 +11,6 @@ spec:
     path: apps
     repoURL: https://github.com/cloud-hacks/argocd-io
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
