@@ -37,7 +37,7 @@ spec:
     kind: ReplicaSet
   - group: ''
     kind: Endpoints
-  - group: ''
+  - group: 'batch'
     kindd: Job
   - group: ''
     kind: ServiceAccount
