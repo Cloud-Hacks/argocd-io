@@ -1,8 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook
+  name: guestbook-appset
   namespace: argocd
+  # finalizers works with app of apps pattern
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -12,15 +15,16 @@ spec:
       selector:
         matchLabels:
           akuity.io/argo-cd-cluster-name: dev
+          akuity.io/argo-cd-cluster-name: prod
   template:
     metadata:
       name: '{{.name}}-guestbook' # 'name' field of the Secret
     spec:
       project: default
       source:
-        repoURL: https://github.com/argoproj/argocd-example-apps/
+        repoURL: https://github.com/cloud-hacks/argocd-io.git
         targetRevision: HEAD
-        path: guestbook
+        path: apps
       destination:
         server: '{{.server}}' # 'server' field of the secret
         namespace: guestbook
