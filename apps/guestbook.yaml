@@ -9,5 +9,5 @@ spec:
     path: guestbook
     targetRevision: HEAD
   destination:
-    namespace: guestbook
+    namespace: guestbook-dev
     name: dev
