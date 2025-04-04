@@ -9,27 +9,16 @@ spec:
         elements:
           - cluster: dev-mini
             name: dev
-            repoPath: appSet/dev
+            repoPath: guestbook
             label: mydev-team
           - cluster: prod-mini
             name: prod
-            repoPath: appSet/prod
+            repoPath: guestbook
             label: myprod-team
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-        - matchExpressions:
-            - key: app
-              operator: In
-              values:
-                - mydev-team
-        - matchExpressions:
-            - key: app
-              operator: In
-              values:
-                - myprod-team
-          maxUpdate: 20% # all applications matched are updated 10% at a time
+          - cluster: staging-mini
+            name: staging
+            repoPath: guestbook
+            label: mystaging-team
   template:
     metadata:
       name: '{{name}}'
@@ -41,6 +30,9 @@ spec:
         repoURL: https://github.com/cloud-hacks/argocd-io
         targetRevision: HEAD
         path: '{{repoPath}}'
+        helm:
+          valueFiles:
+            - values-{{name}}.yaml
       destination:
         name: '{{name}}'
         namespace: mydev
