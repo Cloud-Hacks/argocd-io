@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test
+spec:
+  goTemplate: true
+  goTemplateOptions: ['missingkey=error']
+  generators:
+    - git:
+        repoURL: https://github.com/cloud-hacks/argocd-io.git
+        revision: HEAD
+        files:
+            - path: appSet/dev
+    - git:
+        repoURL: https://github.com/cloud-hacks/argocd-io.git
+        revision: HEAD
+        files:
+            - path: appSet/prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    preserveResourcesOnDeletion: true
+    syncOptions:
+      - CreateNamespace=true
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: '.;..'
+      # finalizers:
+      #   - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: default
+      source:
+        repoURL: '{{`{{ .repoURL }}`}}'
+        targetRevision: HEAD
+        path: ./
+      destination:
+        name: dev
+        namespace: mydev
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
