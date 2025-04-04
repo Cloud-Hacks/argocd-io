@@ -18,7 +18,7 @@ spec:
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       securityContext: 
-        runAsUser: 1000  # Add securityContext here
+        runAsUser: {{ .Values.securityContext.runAsUser }}  # Add securityContext here
       containers:
       - name: mywebapp
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
