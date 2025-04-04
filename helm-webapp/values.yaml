@@ -22,8 +22,5 @@ resources:
     memory: 0.5Gi
     cpu: 250m
 
-securityContext:
-  runAsUser: 1000 # Add securityContext value here
-
 env:  # Add env variables here
   OPENCOST_PARQUET_FILE_KEY_PREFIX: "dev"
