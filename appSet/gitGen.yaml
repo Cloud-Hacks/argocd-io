@@ -1,47 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: test
+  name: gb
 spec:
   goTemplate: true
-  goTemplateOptions: ['missingkey=error']
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/cloud-hacks/argocd-io.git
+        repoURL: https://github.com/argoproj/argo-cd.git
         revision: HEAD
         files:
-            - path: appSet/dev
-    - git:
-        repoURL: https://github.com/cloud-hacks/argocd-io.git
-        revision: HEAD
-        files:
-            - path: appSet/prod
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    preserveResourcesOnDeletion: true
-    syncOptions:
-      - CreateNamespace=true
+        - path: "applicationset/examples/git-generator-files-discovery/cluster-config/**/config.json"
   template:
     metadata:
-      name: '{{.path.basename}}'
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: '.;..'
-      # finalizers:
-      #   - resources-finalizer.argocd.argoproj.io
+      name: '{{.cluster.name}}-gb'
     spec:
       project: default
       source:
-        repoURL: '{{`{{ .repoURL }}`}}'
+        repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
-        path: ./
+        path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
       destination:
         name: dev
-        namespace: mydev
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+        #server: '{{.cluster.address}}'
+        namespace: gb
