@@ -23,7 +23,7 @@ spec:
     namespace: staging
   syncPolicy:
     automated:
-      enabled: false
+      selfHeal: false
     syncOptions:
     # - RespectIgnoreDifferences=true
     - CreateNamespace=true
