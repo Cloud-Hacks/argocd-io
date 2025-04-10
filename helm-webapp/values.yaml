@@ -3,8 +3,8 @@ appName: myapp
 port: 80
 
 image:
-  name: afzal442/movie-catalogue
-  tag: v4
+  name: gcr.io/heptio-images/ks-guestbook-demo
+  tag: 0.1
 
 replicas: 3
 
