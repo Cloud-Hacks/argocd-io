@@ -18,6 +18,6 @@ spec:
     namespace: gb-top
   syncPolicy:
     automated:
-      selfHeal: true
+      selfHeal: false
     syncOptions:
       - CreateNamespace=true
