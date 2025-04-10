@@ -5,13 +5,10 @@ metadata:
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
-  destination:
-    name: in-cluster
-    namespace: argocd
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    path: helm-guestbook
+    repoURL: https://github.com/cloud-hacks/argocd-io.git
+    path: helm-guestbooks
     targetRevision: HEAD
     helm:
       valueFiles:
