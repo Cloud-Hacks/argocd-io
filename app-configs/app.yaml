@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mywebapp
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
   project: default
   source:
@@ -19,7 +21,7 @@ spec:
       #   value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
       # ignoreMissingValueFiles: true
   destination:
-    name: dev
+    name: prod
     namespace: staging
   syncPolicy:
     automated:
