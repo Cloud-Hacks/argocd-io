@@ -15,7 +15,7 @@ spec:
         - values.yaml
   destination:
     server: http://cluster-prod:8001
-    namespace: gb-test
+    namespace: gb-top
   syncPolicy:
     automated:
       selfHeal: true
