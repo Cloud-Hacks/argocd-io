@@ -7,8 +7,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    path: helm-guestbook
+    repoURL: https://github.com/cloud-hacks/argocd-io.git
+    path: helm-webapp
     targetRevision: HEAD
     helm:
       valueFiles:
