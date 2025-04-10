@@ -17,5 +17,7 @@ spec:
     server: http://cluster-prod:8001
     namespace: gb-pr
   syncPolicy:
+    automated:
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
