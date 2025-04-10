@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.appName }}
         tier: backend
     spec:
-      serviceAccountName: {{ .Values.serviceAccount.name }}
+      # serviceAccountName: {{ .Values.serviceAccount.name }}
       securityContext: 
         runAsUser: 1000  # Add securityContext here
       containers:
