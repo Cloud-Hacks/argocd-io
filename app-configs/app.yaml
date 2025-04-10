@@ -21,7 +21,7 @@ spec:
       #   value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
       # ignoreMissingValueFiles: true
   destination:
-    name: dev
+    name: prod
     namespace: staging
   syncPolicy:
     automated:
