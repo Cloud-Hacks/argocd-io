@@ -2,35 +2,23 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapprod
-  # annotations:
-  #   notifications.argoproj.io/subscribe.on-deployed.github: ""
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
   project: default
   source:
-    repoURL: https://github.com/cloud-hacks/argocd-io.git
-    targetRevision: main
-    # ref: values
-    path: helm-webapp
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    path: helm-guestbook
+    targetRevision: HEAD
     helm:
       valueFiles:
-      - values-dev.yaml
-      parameters:
-      - name: securityContext
-        value: null
-      # - name: env
-      #   value: '[{"name":"OPENCOST_PARQUET_FILE_KEY_PREFIX","value":"test"}]'
-      # ignoreMissingValueFiles: true
+        - values.yaml
   destination:
-    name: prod
-    namespace: staging
+    server: http://cluster-prod:8001
+    namespace: gb-prod
   syncPolicy:
-    automated:
-      selfHeal: true
     syncOptions:
-    # - RespectIgnoreDifferences=true
-    - CreateNamespace=true
-  ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-        - /spec/replicas
+      - CreateNamespace=true
