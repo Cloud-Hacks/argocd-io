@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapprod
+  name: myapprod-test
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
@@ -15,7 +15,7 @@ spec:
         - values.yaml
   destination:
     server: http://cluster-prod:8001
-    namespace: gb-prod
+    namespace: gb-test
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
