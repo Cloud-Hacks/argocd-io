@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mywebapp
-  annotations:
-    notifications.argoproj.io/subscribe.on-deployed.github: ""
+  name: myapp
+  # annotations:
+  #   notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
   project: default
   source:
@@ -25,7 +25,7 @@ spec:
     namespace: staging
   syncPolicy:
     automated:
-      selfHeal: false
+      selfHeal: true
     syncOptions:
     # - RespectIgnoreDifferences=true
     - CreateNamespace=true
