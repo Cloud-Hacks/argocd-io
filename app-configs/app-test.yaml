@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapprod
+  name: myapprod-test
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
-    path: helm-guestbooks
+    path: helm-guestbook
     targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: http://cluster-prod:8001
-    namespace: gb-prod
+    namespace: gb-test
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
