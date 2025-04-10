@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
-    path: helm-webapp
+    path: helm-guestbooks
     targetRevision: HEAD
     helm:
       valueFiles:
