@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mywebapp
+  name: myapp
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.github: ""
 spec:
