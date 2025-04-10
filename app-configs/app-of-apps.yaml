@@ -2,6 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstraper
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.github: ""
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
   # namespace: dev Without default ns, app of apps won't be created
 spec:
   destination:
@@ -13,5 +17,7 @@ spec:
     repoURL: https://github.com/cloud-hacks/argocd-io
     targetRevision: HEAD
   syncPolicy:
+    automated:
+      prune: true
     syncOptions:
       - CreateNamespace=true
