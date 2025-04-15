@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     path: helm-guestbook
-    targetRevision: '{{head_sha}}'
+    targetRevision: c7cbe939a1d027ffd6afffa98f1fa7102fe80a2c
     helm:
       valueFiles:
         - values.yaml
