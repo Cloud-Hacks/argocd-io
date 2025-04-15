@@ -4,7 +4,7 @@ metadata:
   name: myapprod-test-ak17
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.github: ""
-    # notifications.argoproj.io/subscribe.appProgressingTooLong.github: ""
+    notifications.argoproj.io/subscribe.on-app-sync-succeeded.github: ""
 spec:
   project: default
   source:
