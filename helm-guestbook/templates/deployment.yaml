@@ -1,52 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "helm-guestbook.fullname" . }}
-  labels:
-    app: {{ template "helm-guestbook.name" . }}
-    chart: {{ template "helm-guestbook.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+  name: sleepy-app
 spec:
-  replicas: {{ .Values.replicaCount }}
-  revisionHistoryLimit: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ template "helm-guestbook.name" . }}
-      release: {{ .Release.Name }}
+      app: sleepy
   template:
     metadata:
       labels:
-        app: {{ template "helm-guestbook.name" . }}
-        release: {{ .Release.Name }}
+        app: sleepy
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.containerPort }}
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+      - name: sleepy-container
+        image: busybox
+        command: ["sh", "-c", "sleep 3600"]  # simulate a long-running container
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - |
+              if [ "$(($(date +%s) - $(stat -c %Y /tmp/ready)))" -gt 120 ]; then
+                exit 0
+              else
+                exit 1
+              fi
+          initialDelaySeconds: 0
+          periodSeconds: 5
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - sh
+              - -c
+              - "date +%s > /tmp/ready"
+        # args: ["sh", "-c", "date +%s > /tmp/ready"]
