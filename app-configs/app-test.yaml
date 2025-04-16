@@ -16,7 +16,7 @@ spec:
       valueFiles:
         - values.yaml
   destination:
-    server: http://cluster-prod:8001
+    name: prod
     namespace: gb-top
   syncPolicy:
     automated:
