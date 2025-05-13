@@ -1,17 +1,8 @@
-FROM ubuntu:mantic-20240530
+# Use a minimal base image
+FROM nginx:alpine
 
-RUN apt-get update && \
-    apt-get install -y apt-utils ca-certificates apt-transport-https cowsay --no-install-recommends && \
-    apt-get clean \
-    && rm -rf \
-        /var/lib/apt/lists/* \
-        /tmp/* \
-        /var/tmp/* \
-        /usr/share/man \
-        /usr/share/doc \
-        /usr/share/doc-base
+# Expose port 80
+EXPOSE 80
 
-# "cowsay" installs to /usr/games
-ENV PATH=$PATH:/usr/games
-
-CMD ["cowsay"]
+# Start nginx (default command already provided by the base image)
+CMD ["nginx", "-g", "daemon off;"]
