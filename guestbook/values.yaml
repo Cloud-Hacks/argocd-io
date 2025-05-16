@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+namespace: guestbook
+
 image:
   repository: quay.io/akuity/argo-cd-learning-assets/guestbook
   tag: latest
