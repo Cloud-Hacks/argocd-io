@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: 'https://github.com/cloud-hacks/argocd-io'
     path: guestbook
-    targetRevision: main
+    targetRevision: HEAD
   destination:
     namespace: guestbook
     name: in-cluster
