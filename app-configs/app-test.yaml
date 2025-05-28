@@ -4,8 +4,8 @@ metadata:
   name: myapprod-test
   annotations:
     notifications.argoproj.io/subscribe.on-deployed.argocd-akuity-alert: ""
-    notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: afvn.in@gmail.com
-    notifications.argoproj.io/subscribe.appProgressingTooLong.akuity-email-sp: tempnobs@gmail.com
+    # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: afvn.in@gmail.com
+    # notifications.argoproj.io/subscribe.appProgressingTooLong.akuity-email-sp: tempnobs@gmail.com
 spec:
   project: default
   source:
