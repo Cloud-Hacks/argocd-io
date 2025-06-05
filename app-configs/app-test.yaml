@@ -9,9 +9,12 @@ metadata:
 spec:
   project: default
   source:
-    path: guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/cloud-hacks/argocd-io.git
+    path: helm-guestbook
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     name: test
     namespace: gb-top
