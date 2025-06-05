@@ -16,7 +16,7 @@ spec:
       valueFiles:
         - values.yaml
   destination:
-    name: prod
+    name: test
     namespace: gb-top
   syncPolicy:
     automated:
