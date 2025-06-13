@@ -17,3 +17,4 @@ spec:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         name: mydevapp-ui
         ports:
+        - containerPort: 80
