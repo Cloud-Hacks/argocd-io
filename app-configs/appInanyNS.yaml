@@ -1,29 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-guestbook
+  namespace: app-in-any-ns
+spec:
+  destination:
+    namespace: any-guestbook
+    name: prod
+  project: app-in-any-namespace
+  source:
+    path: helm-guestbook
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: test
+  name: app-in-any-namespace
   namespace: argocd
 spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
   destinations:
-  - name: '*'
-    namespace: '*'
+  - namespace: '*'
     server: '*'
   sourceNamespaces:
-  - test
+  - /^((?!kube-system).)*$/
   sourceRepos:
   - '*'
 ---
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: my-app
-  namespace: test
-spec:
-  destination:
-    name: test
-    namespace: default
-  project: test
-  source:
-    path: guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
+# It's also important to note that proper RBAC should be configured to properly view the apps in the UI/CLI.  Please see: https://argo-cd.readthedocs.io/en/latest/operator-manual/app-any-namespace/#application-rbac
