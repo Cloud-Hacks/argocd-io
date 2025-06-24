@@ -34,7 +34,7 @@ spec:
     targetRevision: HEAD
     path: stages/test
   destination:
-    server: http://cluster-test-1:8001
+    name: test
     namespace: argocd
   syncPolicy:
     syncOptions:
@@ -54,7 +54,7 @@ spec:
     targetRevision: HEAD
     path: stages/prod
   destination:
-    server: http://cluster-test-1:8001
+    name: test
     namespace: argocd2
   syncPolicy:
     syncOptions:
