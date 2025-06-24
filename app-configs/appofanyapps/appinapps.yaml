@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: test-guestbook-01
-  namespace: any-guestbook
+  namespace: team-back-ui
 spec:
   destination:
     namespace: any-guestbook
