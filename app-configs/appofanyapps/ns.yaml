@@ -1,4 +1,4 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Namespace
 metadata:
-  name: team-back-ui
+  name: any-guestbook
