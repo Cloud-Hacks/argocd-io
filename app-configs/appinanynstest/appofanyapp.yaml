@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: argocd-2
 ---
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1
 kind: AppProject
 metadata:
   name: default-2
@@ -20,7 +20,7 @@ spec:
   sourceRepos:
   - '*'
 ---
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1
 kind: Application
 metadata:
   name: kargo-saas-e2e-test
