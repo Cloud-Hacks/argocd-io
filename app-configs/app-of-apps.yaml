@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstraper
-  annotations:
-      notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
+  name: bootstraper-test
+  # annotations:
+      # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
   #   notifications.argoproj.io/subscribe.on-deployed.github: ""
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  # - resources-finalizer.argocd.argoproj.io
   # namespace: dev Without default ns, app of apps won't be created
 spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: default
+  project: app-in-any-ns
   source:
-    path: apps
+    path: app-configs/appofanyapps
     repoURL: https://github.com/cloud-hacks/argocd-io
     targetRevision: HEAD
   syncPolicy:
