@@ -1,13 +1,13 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: team-dev-ux
----
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: team-dev-ui
+# ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: test-guestbook-01
-  namespace: team-dev-ux
+  namespace: team-dev-ui
 spec:
   destination:
     namespace: any-guestbook
