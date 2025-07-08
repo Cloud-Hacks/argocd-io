@@ -1,13 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: team-dev-ui
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: test-guestbook-01
-  namespace: team-dev-ui
+  # namespace: team-dev-ui
 spec:
   destination:
     namespace: any-guestbook
@@ -35,7 +30,7 @@ spec:
   - namespace: '*'
     server: '*'
   sourceNamespaces:
-  - /^((?!kube-system).)*$/
+  - team-dev-ui
   sourceRepos:
   - '*'
 # ---
