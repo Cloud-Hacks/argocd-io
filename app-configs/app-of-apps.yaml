@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstraper-test
+  namespace: app-in-any-ns
   # annotations:
       # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
   #   notifications.argoproj.io/subscribe.on-deployed.github: ""
