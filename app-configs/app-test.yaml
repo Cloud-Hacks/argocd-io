@@ -9,7 +9,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: afvn.in@gmail.com
     # notifications.argoproj.io/subscribe.appProgressingTooLong.akuity-email-sp: tempnobs@gmail.com
 spec:
-  project: default
+  project: default-3
   source:
     repoURL: https://github.com/cloud-hacks/argocd-io.git
     path: helm-guestbook
