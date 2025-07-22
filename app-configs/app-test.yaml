@@ -1,11 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapprod-test
+  name: myapp-test
   annotations:
     # notifications.argoproj.io/subscribe.on-deployed.argocd-akuity-alert: ""
-    notifications.argoproj.io/subscribe.on-sync-status-change.smee: ""
-    # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: afvn.in@gmail.com
+    # notifications.argoproj.io/subscribe.on-sync-status-change.smee: ""
+    # notifications.argoproj.io/subscribe.on-deployment-ready.awssqs: "awssqs"
+    notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: afvn.in@gmail.com
     # notifications.argoproj.io/subscribe.appProgressingTooLong.akuity-email-sp: tempnobs@gmail.com
 spec:
   project: default
@@ -18,7 +19,7 @@ spec:
         - values.yaml
   destination:
     name: test
-    namespace: gb-top
+    namespace: gb-test
   syncPolicy:
     automated:
       selfHeal: false
