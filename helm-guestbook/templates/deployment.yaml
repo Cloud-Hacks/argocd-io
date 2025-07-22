@@ -47,7 +47,6 @@ spec:
               cpu: 100m
               memory: 256Mi
             {{- end }}
-{{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
