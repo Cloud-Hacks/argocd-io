@@ -37,6 +37,16 @@ spec:
               path: /
               port: http
           resources:
+            {{- if .Values.resources }}
+            {{- toYaml .Values.resources | nindent 12 }}
+            {{- else }}
+            requests:
+              cpu: 200m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            {{- end }}
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
