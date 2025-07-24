@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-billing-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: test
+    namespace: default
+  sources:
+    - repoURL: https://github.com/Cloud-Hacks/billing-app.git
+      path: manifests
+      targetRevision: HEAD
+      annotations:
+        argocd.argoproj.io/sync-wave: "-1"
+    - repoURL: https://github.com/Cloud-Hacks/common-settings.git
+      path: configmaps-billing
+      targetRevision: HEAD
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"
