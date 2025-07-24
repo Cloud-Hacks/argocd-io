@@ -10,6 +10,6 @@ spec:
     name: test
     namespace: default
   source:
-    - repoURL: https://github.com/Cloud-Hacks/common-settings.git
-      path: configmaps-billing
-      targetRevision: HEAD
+    repoURL: https://github.com/Cloud-Hacks/common-settings.git
+    path: configmaps-billing
+    targetRevision: HEAD

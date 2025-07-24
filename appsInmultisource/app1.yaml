@@ -10,6 +10,6 @@ spec:
     name: test
     namespace: default
   source:
-    - repoURL: https://github.com/Cloud-Hacks/billing-app.git
-      path: manifests
-      targetRevision: HEAD
+    repoURL: https://github.com/Cloud-Hacks/billing-app.git
+    path: manifests
+    targetRevision: HEAD
