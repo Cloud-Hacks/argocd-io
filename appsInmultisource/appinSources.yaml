@@ -4,7 +4,7 @@ metadata:
   name: my-billing-app
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook: PreSync
 spec:
   project: default
   destination:
