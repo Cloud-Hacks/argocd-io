@@ -4,6 +4,7 @@ metadata:
   name: my-billing-manifests
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    akuity.io/auto-incident: "sync-app"
 spec:
   project: default
   destination:
