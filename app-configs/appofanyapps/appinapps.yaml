@@ -8,6 +8,8 @@ kind: Application
 metadata:
   name: test-guestbook-01
   namespace: team-dev-ui
+  annotations:
+    notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
 spec:
   destination:
     namespace: any-guestbook
