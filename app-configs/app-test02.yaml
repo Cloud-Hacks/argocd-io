@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "cams-dev-root"
+  namespace: "cams"
+spec:
+  destination:
+    namespace: "cams"
+    name: "in-cluster"
+  project: "cams"
+  sources:
+  - repoURL: https://github.com/dexcom-inc/cams-deploy
+    path: "cams-argocd/argo-application/dev"
+    targetRevision: "main" # This is the branch name for the gitops repository. Change only for testing purposes on a feature branch.
+    helm:
+      values: |
+        environment: "dev"
+        gitopsRevision: "main"
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
