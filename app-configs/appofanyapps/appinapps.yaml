@@ -24,20 +24,20 @@ spec:
     syncOptions:
     - CreateNamespace=true
 ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: AppProject
-# metadata:
-#   name: app-in-any-ns
-#   namespace: argocd
-# spec:
-#   clusterResourceWhitelist:
-#   - group: '*'
-#     kind: '*'
-#   destinations:
-#   - namespace: '*'
-#     server: '*'
-#   sourceNamespaces:
-#   - team-dev-ui
-#   sourceRepos:
-#   - '*'
-# ---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-in-any-ns
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceNamespaces:
+  - team-dev-ui
+  sourceRepos:
+  - '*'
+---
