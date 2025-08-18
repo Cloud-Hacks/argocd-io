@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: test-guestbook-01
-  namespace: team-dev-ui
+  namespace: cams
   annotations:
     notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
 spec:
