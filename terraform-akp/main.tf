@@ -8,11 +8,11 @@ terraform {
 }
 
 provider "akp" {
-  org_name = "afzal09"
+  org_name = "akuity"
 }
 
 resource "akp_instance" "argocd" {
-  name = "my9instance-test"
+  name = "afzal-instance-test"
   argocd = {
     "spec" = {
       "instance_spec" = {
