@@ -14,7 +14,7 @@ spec:
   destination:
     namespace: any-guestbook
     name: test
-  project: cams
+  project: default
   source:
     path: helm-guestbook
     repoURL: https://github.com/argoproj/argocd-example-apps.git
