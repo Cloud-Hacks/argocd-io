@@ -14,7 +14,7 @@ spec:
   destination:
     namespace: any-guestbook
     name: test
-  project: default
+  project: app-in-any-ns
   source:
     path: helm-guestbook
     repoURL: https://github.com/argoproj/argocd-example-apps.git
