@@ -9,7 +9,8 @@ metadata:
   name: test-guestbook-01
   namespace: cams
   annotations:
-    notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
+    # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
+    argocd.argoproj.io/manifest-generate-paths: /guestbook
 spec:
   destination:
     namespace: any-guestbook
@@ -21,9 +22,9 @@ spec:
         - external-secrets
   project: cams
   source:
-    path: helm-guestbook
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
+    path: guestbook
   syncPolicy:
     managedNamespaceMetadata:
       labels:
