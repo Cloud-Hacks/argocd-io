@@ -24,7 +24,7 @@ spec:
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
-    path: my-application
+    path: guestbook
   syncPolicy:
     managedNamespaceMetadata:
       labels:
