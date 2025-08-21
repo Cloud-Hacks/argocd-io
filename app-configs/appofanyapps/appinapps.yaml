@@ -14,7 +14,7 @@ metadata:
 spec:
   destination:
     namespace: any-guestbook
-    name: afzal-test
+    name: test
   ignoreDifferences:
     - group: '*'
       kind: '*'
