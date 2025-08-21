@@ -10,7 +10,7 @@ metadata:
   namespace: cams
   annotations:
     # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
-    argocd.argoproj.io/manifest-generate-paths: /guestbook
+    argocd.argoproj.io/manifest-generate-paths: .;../shared
 spec:
   destination:
     namespace: any-guestbook
@@ -24,7 +24,7 @@ spec:
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
-    path: guestbook
+    path: my-application
   syncPolicy:
     managedNamespaceMetadata:
       labels:
