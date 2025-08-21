@@ -10,7 +10,7 @@ metadata:
   namespace: cams
   annotations:
     # notifications.argoproj.io/subscribe.on-app-sync-succeeded.akuity-email-sp: tempnobs@gmail.com
-    argocd.argoproj.io/manifest-generate-paths: .;../shared
+    argocd.argoproj.io/manifest-generate-paths: "/shared/*-secret.yaml"
 spec:
   destination:
     namespace: any-guestbook
