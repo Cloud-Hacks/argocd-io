@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oci-helm-app
+spec:
+  project: default
+  source:
+    repoURL: ghcr.io/afzal442
+    targetRevision: 0.2.0
+    chart: argocd-oci
+    plugin:
+      name: oci-kustomize-helm
+  destination:
+    name: test
+    namespace: oci
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
