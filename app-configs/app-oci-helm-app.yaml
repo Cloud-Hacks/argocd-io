@@ -8,8 +8,6 @@ spec:
     repoURL: ghcr.io/afzal442
     targetRevision: 0.2.0
     chart: argocd-oci
-    plugin:
-      name: oci-kustomize-helm
   destination:
     name: test
     namespace: oci
