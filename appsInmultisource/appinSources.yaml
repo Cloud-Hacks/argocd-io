@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: my-billing-app
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   destination:
@@ -14,10 +12,6 @@ spec:
     - repoURL: https://github.com/Cloud-Hacks/billing-app.git
       path: manifests
       targetRevision: HEAD
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
     - repoURL: https://github.com/Cloud-Hacks/common-settings.git
       path: configmaps-billing
       targetRevision: HEAD
-      annotations:
-        argocd.argoproj.io/sync-wave: "1"
