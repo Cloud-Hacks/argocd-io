@@ -40,6 +40,9 @@ spec:
       destination:
         name: test
         namespace: pr-{{.number}}
+      managedNamespaceMetadata:
+        annotations:
+          argocd.argoproj.io/tracking-id: "preview-{{.branch}}-{{.number}}:/Namespace:/pr-{{.number}}"
       syncPolicy:
         automated:
           prune: true
