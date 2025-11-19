@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    cluster: dt-dev-admin-two-akuity-agent
+  name: dt-dev-admin-two-api-integration-service
+  namespace: argocd
+spec:
+  destination:
+    name: dt-dev-admin-two-akuity-agent
+    namespace: fico-platform-api-integration-service
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: apicAuthoringService.image.tag
+        value: $ARGOCD_APP_REVISION_SHORT
+      - name: apicBffService.image.tag
+        value: $ARGOCD_APP_REVISION_SHORT
+      - name: apicClientAuthoringService.image.tag
+        value: $ARGOCD_APP_REVISION_SHORT
+      - name: apicOperatorService.image.tag
+        value: $ARGOCD_APP_REVISION_SHORT
+      valueFiles:
+      - values-dt-test.yaml
+    path: tools/helm/apic-services
+    repoURL: https://github.com/FICO-1ES/api-integration-service
+    targetRevision: APIC-2198/migrate-from-cloud-addon-role-to-repo-secret-for-image-pull-for-secretproviderclass-integration
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 4
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    - PruneLast=true

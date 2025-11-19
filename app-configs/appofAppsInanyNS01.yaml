@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "cams-dev-rootio"
+  namespace: "cams"
+spec:
+  destination:
+    namespace: "cams"
+    name: "test"
+  project: "cams"
+  source:
+    path: app-configs/appofanyapps
+    repoURL: https://github.com/cloud-hacks/argocd-io
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
