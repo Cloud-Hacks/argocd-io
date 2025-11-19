@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mydevapp-ui
 spec:
-  replicas: 1
+  replicas: 3
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -14,7 +14,7 @@ spec:
         app: mydevapp-ui
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      - image: gcr.io/google-samples/gb-frontend:v5
         name: mydevapp-ui
         ports:
         - containerPort: 80
