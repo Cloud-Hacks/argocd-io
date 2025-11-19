@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: preview-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  generators:
+    - pullRequest:
+        github:
+          owner: cloud-hacks
+          repo: argocd-io
+          tokenRef:
+            secretName: application-set-secret
+            key: token
+          labels:
+            - preview
+        requeueAfterSeconds: 60
+  template:
+    metadata:
+      name: preview-{{.branch}}-{{.number}}
+      labels:
+        ci: "true"
+      annotations:
+        notifications.argoproj.io/subscribe.on-deployed.argocd-akuity-alert: ""
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Cloud-Hacks/argocd-io
+        targetRevision: "{{.head_sha}}"
+        path: helm-guestbook
+        helm:
+          valueFiles:
+            - values/values.yaml
+        # kustomize:
+        #   commonLabels:
+        #     app.kubernetes.io/instance: "{{.branch}}-{{.number}}"
+      destination:
+        name: test
+        namespace: pr-{{.number}}
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
