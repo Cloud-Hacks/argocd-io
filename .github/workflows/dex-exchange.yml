@@ -1,0 +1,74 @@
+name: argocd-test
+on:
+  pull_request:
+
+permissions:
+  id-token: write
+
+jobs:
+  argocd-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get runtime token URL and runtime token
+        uses: actions/github-script@v6
+        id: script
+        with:
+          script: |
+            const token = process.env['ACTIONS_RUNTIME_TOKEN']
+            const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL']
+            core.setOutput('TOKEN', token.trim())
+            core.setOutput('IDTOKENURL', runtimeUrl.trim())
+
+      - name: Obtain Dex access token (exchange)
+        id: idtoken
+        run: |
+          set -euo pipefail
+          echo "Requesting ID token from GitHub OIDC endpoint..."
+          GH_TOKEN_RESPONSE=$(curl -sSf \
+            "${{ steps.script.outputs.IDTOKENURL }}" \
+            -H "Authorization: bearer ${{ steps.script.outputs.TOKEN }}" \
+            -H "Accept: application/json; api-version=2.0" \
+            -H "Content-Type: application/json" \
+            -d "{}")
+          GH_TOKEN=$(jq -r .value <<< "$GH_TOKEN_RESPONSE")
+          echo "::add-mask::$GH_TOKEN"
+
+          echo "Exchanging GitHub token at Dex..."
+          DEX_URL="https://afzal64.cd.akuity.cloud/api/dex/token"
+          DEX_TOKEN_RESPONSE=$(curl -sSf \
+            "$DEX_URL" \
+            --user argo-cd-cli: \
+            --data-urlencode "connector_id=github-actions" \
+            --data-urlencode "grant_type=urn:ietf:params:oauth:grant-type:token-exchange" \
+            --data-urlencode "scope=openid email profile federated:id" \
+            --data-urlencode "requested_token_type=urn:ietf:params:oauth:token-type:access_token" \
+            --data-urlencode "subject_token=$GH_TOKEN" \
+            --data-urlencode "subject_token_type=urn:ietf:params:oauth:token-type:id_token")
+          DEX_TOKEN=$(jq -r .access_token <<< "$DEX_TOKEN_RESPONSE")
+
+          if [[ -z "$DEX_TOKEN" || "$DEX_TOKEN" == "null" ]]; then
+            echo "::error::No token found in dex response: $DEX_TOKEN_RESPONSE"
+            exit 1
+          fi
+
+          echo "::add-mask::$DEX_TOKEN"
+          echo "dex-token=$DEX_TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Setup ArgoCD CLI
+        run: |
+          curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          install -m 555 argocd-linux-amd64 "$RUNNER_TEMP/argocd/argocd"
+          echo "$RUNNER_TEMP/argocd" >> "$GITHUB_PATH"
+          rm argocd-linux-amd64
+
+      - name: Use CLI in some commands
+        env:
+          ARGOCD_AUTH_TOKEN: ${{ steps.idtoken.outputs.dex-token }}
+          ARGOCD_SERVER: argocd.example.com
+          ARGOCD_OPTS: --grpc-web
+        run: |
+          set -x
+          argocd version
+          argocd account get-user-info
+          argocd proj list
+          argocd app list
