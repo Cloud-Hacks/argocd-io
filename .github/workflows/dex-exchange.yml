@@ -35,7 +35,7 @@ jobs:
 
           echo "Exchanging GitHub token at Dex..."
           DEX_URL="https://afzal64.cd.akuity.cloud/api/dex/token"
-          DEX_TOKEN_RESPONSE=$(curl -sSf \
+          DEX_TOKEN_RESPONSE=$(curl -sSfL \
             "$DEX_URL" \
             --user argo-cd-cli: \
             --data-urlencode "connector_id=github-actions" \
