@@ -65,7 +65,7 @@ jobs:
       - name: Use CLI in some commands
         env:
           ARGOCD_AUTH_TOKEN: ${{ steps.idtoken.outputs.dex-token }}
-          ARGOCD_SERVER: https://afzal64.cd.akuity.cloud
+          ARGOCD_SERVER: afzal64.cd.akuity.cloud
           ARGOCD_OPTS: --grpc-web
         run: |
           set -x
