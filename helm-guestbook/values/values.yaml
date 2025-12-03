@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/google-samples/gb-frontend
+  repository: gcr.io/google-samples/gb-fe
   tag: v5
   pullPolicy: IfNotPresent
 
